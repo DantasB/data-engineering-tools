@@ -7,13 +7,6 @@ services:
       dockerfile: Dockerfile
     container_name: airflow
     restart: unless-stopped
-    env_file: .env
-    environment:
-      - MONGO_USERNAME=$MONGO_USERNAME
-      - MONGO_PASSWORD=$MONGO_PASSWORD
-      - MONGO_HOSTNAME=$MONGO_HOSTNAME
-      - MONGO_PORT=$MONGO_PORT
-      - MONGO_DB=$MONGO_DB
     ports:
       - "8080:8080"
     networks:
@@ -25,16 +18,12 @@ services:
       dockerfile: Dockerfile
     container_name: spark3
     restart: unless-stopped
-    env_file: .env
     ports:
       - "4040:4040"
       - "7078:7078"
       - "7079:7079"
       - "8088:8088"
       - "10000:10000"
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
-      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
     networks:
       - de-network
 
