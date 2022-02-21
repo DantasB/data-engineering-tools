@@ -126,6 +126,8 @@ services:
     command:
       - -c
       - |
+        mkdir -p ./dags ./logs ./plugins
+        echo -e "AIRFLOW_UID=$(id -u)" > .env
         function ver() {
           printf "%04d%04d%04d%04d" $${1//./ }
         }
